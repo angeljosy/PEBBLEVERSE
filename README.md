@@ -1,614 +1,723 @@
+# 🪨 PEBBLEVERSE
 
-🪨 PEBBLEVERSE
-A Civilization With Absolutely No Purpose.
-PEBBLEVERSE is a humorous interactive civilization simulator where 30 completely ordinary pebbles somehow manage to have personalities, relationships, marriages, gossip, crimes, laws, government, an economy, achievements, and historical events — despite having absolutely no purpose.
+## A Civilization With Absolutely No Purpose.
 
-🌍 Overview
-PEBBLEVERSE is a lightweight Flask-based web simulation that creates a continuously changing virtual civilization.
+> **PEBBLEVERSE** is a humorous real-time civilization simulator where 30 completely ordinary pebbles form a surprisingly complicated society.
 
-Each pebble has its own identity and state, including:
+They have a government.
 
-Name
+They have laws.
 
-Personality
+They gossip.
 
-Mood
+They commit crimes.
 
-Age
+They go to court.
 
-Favorite number
+They form relationships.
 
-Current action
+They get married.
 
-Gossip count
+They earn money.
 
-Money
-
-Crime count
-
-Relationship status
-
-Marriage status
-
-Achievement
-
-Activity status
-
-The simulation changes automatically while the application is running.
-
-Core idea
-What happens when a civilization has everything except a purpose?
-
-✨ Features
-🗺️ Pebble Plains
-The main simulation world displays the pebble population with randomized positions and movement.
-
-30 pebbles
-
-Dynamic positions
-
-Changing moods and actions
-
-Clickable pebbles
-
-Animated visual environment
-
-🧍 Pebble Profiles
-Selecting a pebble displays its current information such as personality, mood, age, money, partner, crimes, status, and life purpose.
-
-🏛️ Government
-The civilization randomly assigns:
-
-President
-
-Vice President
-
-Minister of Nothing
-
-Minister of Rolling
-
-Minister of Gossip
-
-📊 Civilization Statistics
-Live statistics include:
-
-Population
-
-Moving pebbles
-
-Pebbles doing nothing
-
-Gossip
-
-Crimes
-
-Relationships
-
-Marriages
-
-Economy
-
-Civilization progress
-
-Purpose
-
-🎯 Civilization Purpose
-The civilization's official purpose is:
-
-NONE
-
-Progress remains intentionally negligible.
-
-🏘️ Pebble Town Square
-A visual social hub showing:
-
-Current mood
-
-Social drama
-
-Purpose
-
-Live activity
-
-Civilization announcements
-
-Animated pebble interactions
-
-🗣️ Gossip System
-Random gossip is generated using a speaker, target, optional third pebble, statement, reliability score, classification, and timestamp.
-
-Gossip levels:
-
-CONFIRMED
-
-RUMOR
-
-SUSPICIOUS
-
-WILD SPECULATION
-
-⚖️ Pebble Court
-Random crimes are generated and assigned humorous verdicts.
-
-Example crimes:
-
-Illegal Rolling
-
-Suspicious Standing
-
-Unauthorized Staring
-
-Excessive Doing Nothing
-
-Gossip Without Permission
-
-Moving Without Purpose
-
-Thinking Too Loudly
-
-Being Suspicious
-
-📜 Useless Laws
-The civilization contains intentionally meaningless laws, for example:
-
-Every pebble must stare at another pebble for 3 seconds.
-
-Rolling more than 5 centimeters requires government permission.
-
-Thinking about moving without actually moving is encouraged.
-
-Gossip must be completely unreliable.
-
-Nobody is allowed to accomplish anything.
-
-💕 Relationships
-Pebbles can randomly become:
-
-Friends
-
-Best Friends
-
-Enemies
-
-Suspicious Partners
-
-Secret Friends
-
-Professional Rivals
-
-💍 Marriages
-Unmarried pebbles can be paired randomly and married for absolutely no reason.
-
-🎲 Random Events
-The application continuously creates events such as:
-
-A suspicious amount of nothing happened.
-
-Someone looked at someone else.
-
-A pebble rolled for absolutely no reason.
-
-Nobody knows what happened.
-
-A pebble forgot why it moved.
-
-Someone was caught thinking.
-
-Each event includes importance, impact, and timestamp.
-
-🏆 Achievements
-Pebbles can receive humorous achievements such as:
-
-Moved 1 centimeter
-
-Did absolutely nothing
-
-Gossiped successfully
-
-Survived another day
-
-Avoided responsibility
-
-Won an argument about nothing
-
-🧩 Architecture
-                 ┌─────────────────────┐
-                 │     PEBBLEVERSE     │
-                 │    Web Interface    │
-                 └──────────┬──────────┘
-                            │
-                            ▼
-                 ┌─────────────────────┐
-                 │      Flask App      │
-                 │       app.py        │
-                 └──────────┬──────────┘
-                            │
-          ┌─────────────────┼─────────────────┐
-          ▼                 ▼                 ▼
-     Pebble State      Civilization      Simulation
-        Data              Rules             Logic
-          │                 │                 │
-          ├───────┬─────────┼────────┬────────┤
-          ▼       ▼         ▼        ▼        ▼
-       Gossip   Court   Government  Social   Events
-                                      │
-                                      ▼
-                              Relationships /
-                                Marriages
-          │
-          └──────────────────┬────────────────┘
-                             ▼
-                    JSON API Responses
-                             │
-                             ▼
-                     HTML / CSS / JS
-                             │
-                             ▼
-                   Interactive Civilization
-🔌 API Endpoints
-Endpoint	Purpose
-/	Loads the main interface
-/pebbles	Returns and updates pebble states
-/gossip	Generates and returns gossip
-/event	Generates the latest event
-/stats	Returns civilization statistics
-/government	Returns government information
-/laws	Returns civilization laws
-/court	Generates and returns court cases
-/relationships	Returns relationships
-/marriages	Returns marriages
-/achievement	Generates an achievement
-/history	Returns recent civilization history
-The frontend periodically requests these endpoints so the world changes without a page reload.
-
-🔄 Update Cycle
-Typical frontend update intervals:
-
-Pebbles        → every 3 seconds
-Statistics     → every 3 seconds
-Gossip         → every 5 seconds
-Court          → every 7 seconds
-Relationships  → every 8 seconds
-Events         → every 10 seconds
-Marriages      → every 12 seconds
-Achievements   → every 15 seconds
-History        → every 10 seconds
-This creates the impression of a continuously running civilization.
-
-🎨 UI / UX
-The interface intentionally uses a soft cartoon-world aesthetic rather than a conventional dashboard.
-
-Design characteristics
-Warm cream background
-
-Rounded cards
-
-Soft borders
-
-Pebble illustrations
-
-Emoji section indicators
-
-Subtle shadows
-
-Animated elements
-
-Scrollable information panels
-
-Responsive layout
-
-Playful typography
-
-Visual social interactions
-
-The Town Square was added as a visual activity area to make the civilization feel more alive and reduce unused space in the main layout.
-
-🖼️ Screenshots
-Home / Pebble Plains
-
-
-Pebble Profile
-
-
-Government
-
-
-Civilization Statistics
-
-
-Civilization Purpose
-
-
-Pebble Town Square
-
-
-Gossip
-
-
-Pebble Court
-
-
-Useless Laws
-
-
-Relationships
-
-
-Marriages
-
-
-Latest Event
-
-
-Additional Views
-Add the remaining screenshots to the repository and reference them here:
-
-![Pebbleverse View 12](pebble12.png)
-![Pebbleverse View 13](pebble13.png)
-![Pebbleverse View 14](pebble14.png)
-🎥 Demo Video
-Recommended repository location:
-
-assets/pebble.mp4
-For a large video, it is better to host it externally or attach it to a GitHub Release rather than relying on a large binary directly in the repository.
-
-Example:
-
-## 🎥 Demo
-
-[▶️ Watch the PEBBLEVERSE Demo](YOUR_DEMO_LINK)
-🛠️ Technology Stack
-Technology	Usage
-Python	Backend and simulation logic
-Flask	Web server and API
-HTML5	Interface structure
-CSS3	Styling and animations
-JavaScript	Dynamic updates and interaction
-JSON	API data exchange
-Git	Version control
-GitHub	Repository and collaboration
-📁 Recommended Repository Structure
-PEBBLEVERSE/
-│
-├── app.py
-├── templates/
-│   └── index.html
-├── static/
-│   ├── style.css
-│   ├── script.js
-│   └── images/
-├── assets/
-│   ├── Home.png
-│   ├── pebble1.png
-│   ├── pebble2.png
-│   ├── pebble3.png
-│   ├── pebble4.png
-│   ├── pebble5.png
-│   ├── pebble6.png
-│   ├── pebble7.png
-│   ├── pebble8.png
-│   ├── pebble9.png
-│   ├── pebble10.png
-│   ├── pebble11.png
-│   ├── pebble12.png
-│   ├── pebble13.png
-│   ├── pebble14.png
-│   └── pebble.mp4
-├── requirements.txt
-└── README.md
-Adjust this structure to match the actual source files in the final repository.
-
-🚀 Installation
-1. Clone the repository
-git clone https://github.com/angeljosy/PEBBLEVERSE.git
-cd PEBBLEVERSE
-2. Create a virtual environment
-Windows:
-
-python -m venv venv
-venv\Scripts\activate
-macOS/Linux:
-
-python3 -m venv venv
-source venv/bin/activate
-3. Install dependencies
-pip install -r requirements.txt
-If requirements.txt has not been created yet:
-
-pip install flask
-4. Run the application
-python app.py
-Open:
-
-http://127.0.0.1:5000
-🧪 Simulation Flow
-Create 30 Pebbles
-       ↓
-Assign Random Properties
-       ↓
-Create Initial Relationships
-       ↓
-Create Initial Marriages
-       ↓
-Start Flask Server
-       ↓
-Frontend Requests Data
-       ↓
-Simulation Updates
-       ├── Movement
-       ├── Mood
-       ├── Actions
-       ├── Gossip
-       ├── Crimes
-       ├── Relationships
-       ├── Marriages
-       ├── Events
-       └── Achievements
-       ↓
-Updated Civilization
-💾 Data Model
-A pebble is represented internally using a Python dictionary similar to:
-
-{
-    "id": 1,
-    "name": "Gerald 1",
-    "personality": "Dramatic",
-    "mood": "Happy",
-    "action": "Rolling slightly",
-    "age": 42,
-    "favorite_number": 7,
-    "x": 50,
-    "y": 40,
-    "gossip": 3,
-    "money": 250,
-    "crime_count": 1,
-    "status": "Active",
-    "partner": None,
-    "achievement": None
-}
-The current implementation uses in-memory state, so restarting the Flask server resets the simulation.
-
-🧑‍💻 GitHub Development Workflow
-Recommended workflow for contributing changes:
-
-Fork
-  ↓
-Clone
-  ↓
-Create Feature Branch
-  ↓
-Develop
-  ↓
-Test
-  ↓
-Commit
-  ↓
-Push
-  ↓
-Pull Request
-  ↓
-Review / Merge
-Example:
-
-git checkout -b ui-improvements
-
-git add .
-
-git commit -m "Improve PebbleVerse UI and animations"
-
-git push -u origin ui-improvements
-🐛 Current Design Considerations
-In-memory state
-Civilization data is currently stored in Python memory. Restarting the server creates a new civilization.
-
-Randomized simulation
-Many properties and events are randomized, so each run can produce a different civilization.
-
-No purpose
-This is intentional.
-
-It is the project's central feature.
-
-🔮 Future Improvements
-Potential extensions include:
-
-Persistent database storage
-
-User accounts
-
-Authentication
-
-Larger interactive world
-
-Custom pebble appearances
-
-More advanced personalities
-
-AI-generated gossip
-
-Real-time pebble chat
-
-Historical statistics
-
-Government elections
-
-Detailed economy
-
-Civilization conflicts
-
-Pebble houses and neighborhoods
-
-Dynamic weather
-
-Sound effects
-
-Mobile optimization
-
-Online multiplayer
-
-🎯 Project Objectives
-PEBBLEVERSE demonstrates practical concepts in:
-
-Full-stack web development
-
-Flask application development
-
-REST-style API endpoints
-
-Dynamic JavaScript updates
-
-Randomized simulation
-
-State management
-
-Interactive UI design
-
-CSS animation
-
-Responsive web design
-
-Git and GitHub collaboration
-
-Creative software development
-
-📌 Project Status
-Status: 🟢 Active Development
-
-Population: 30 Pebbles
-
-Purpose: NONE
-
-Progress: 0.0001%
-
-Economic Growth: Absolutely none
-
-Productivity: Questionable
-
-🪨 Philosophy
-PEBBLEVERSE follows one simple principle:
-
-A civilization doesn't need a purpose to have problems.
-
-It has government.
-
-It has laws.
-
-It has gossip.
-
-It has crime.
-
-It has relationships.
-
-It has marriages.
-
-It has an economy.
-
-It has achievements.
+They achieve things.
 
 And somehow...
 
-It still accomplishes absolutely nothing.
-👥 Contributors
-Angel A J 
-Anu P S
+### None of it has any purpose. 🪨
 
+---
+
+# 🌍 About PEBBLEVERSE
+
+**PEBBLEVERSE** is an interactive web-based civilization simulation built using **Python and Flask**.
+
+The application creates a virtual civilization populated by **30 randomly generated pebbles**. Each pebble has its own identity, personality, mood, actions, social relationships, money, criminal record and achievements.
+
+While the application is running, the civilization continuously changes.
+
+Pebbles move around.
+
+Their moods change.
+
+They gossip about each other.
+
+They commit completely unnecessary crimes.
+
+They appear in court.
+
+They form friendships and rivalries.
+
+Some even get married.
+
+Random events occur throughout the civilization.
+
+The result is a dynamic miniature society where **nothing particularly useful happens — but something is always happening.**
+
+---
+
+# ✨ Features
+
+## 🪨 1. Pebble Civilization
+
+The simulation begins with **30 randomly generated pebbles**.
+
+Each pebble receives randomly generated characteristics including:
+
+- Unique ID
+- Name
+- Personality
+- Mood
+- Current action
+- Age
+- Favorite number
+- Position
+- Money
+- Gossip count
+- Crime count
+- Status
+- Partner
+- Achievement
+
+Each execution of the application can therefore produce a different civilization.
+
+---
+
+# 🌎 2. Pebble Plains
+
+The **Pebble Plains** is the main world where the civilization exists.
+
+Pebbles continuously move around the environment and their states change over time.
+
+Possible pebble actions include:
+
+- Doing absolutely nothing
+- Rolling slightly
+- Staring at another pebble
+- Avoiding everyone
+- Thinking about nothing
+- Moving unnecessarily
+- Having an existential crisis
+- Judging another pebble
+- Waiting for something
+- Pretending to be busy
+
+Users can interact with the pebbles and view their individual profiles.
+
+---
+
+# 🧠 3. Pebble Personalities
+
+Every pebble is assigned a random personality.
+
+Possible personalities include:
+
+- Grumpy
+- Dramatic
+- Nosy
+- Introvert
+- Overconfident
+- Suspicious
+- Friendly
+- Lazy
+- Judgmental
+
+These personalities add randomness and humor to the civilization.
+
+---
+
+# 🏛️ 4. Government
+
+PEBBLEVERSE has its own government.
+
+Government positions are randomly assigned to members of the civilization.
+
+### Government Positions
+
+- President
+- Vice President
+- Minister of Nothing
+- Minister of Rolling
+- Minister of Gossip
+
+The government exists mainly to make sure that **nothing productive happens efficiently.**
+
+---
+
+# 📜 5. Useless Laws
+
+The civilization operates under several completely unnecessary laws.
+
+Examples include:
+
+> Every pebble must stare at another pebble for 3 seconds.
+
+> Rolling more than 5 centimeters requires government permission.
+
+> Thinking about moving without actually moving is encouraged.
+
+> Gossip must be completely unreliable.
+
+> Nobody is allowed to accomplish anything.
+
+> Pebbles must maintain a respectful distance from suspicious pebbles.
+
+> Standing still for too long is considered suspicious.
+
+> The number 7 is temporarily illegal.
+
+> All arguments must be about absolutely nothing.
+
+> Pebbles must pretend they have somewhere to go.
+
+---
+
+# 📊 6. Civilization Statistics
+
+The dashboard continuously displays the current state of the civilization.
+
+Statistics include:
+
+- Active population
+- Total population
+- Moving pebbles
+- Pebbles doing nothing
+- Gossip count
+- Crime count
+- Relationships
+- Marriages
+- Total money
+- Civilization progress
+- Civilization purpose
+
+The most important statistic is:
+
+# 🎯 Purpose: NONE
+
+---
+
+# 🏘️ 7. Pebble Town Square
+
+The **Pebble Town Square** represents the social center of the civilization.
+
+It provides a more visual representation of everyday pebble activity.
+
+Pebbles can:
+
+- Stand around
+- Move unnecessarily
+- Observe other pebbles
+- Gossip
+- Start pointless arguments
+- Do absolutely nothing
+
+The Town Square makes the civilization feel more alive and interactive.
+
+---
+
+# 🗣️ 8. Gossip System
+
+Pebbles constantly generate gossip about other members of the civilization.
+
+Examples:
+
+- One pebble thinks another pebble is suspicious.
+- Someone has been standing still for too long.
+- A pebble secretly likes another pebble.
+- Someone moved for absolutely no reason.
+- Someone is planning something.
+- Someone cannot be trusted.
+- Someone thinks they are the most important pebble.
+
+Each gossip message receives a reliability classification.
+
+| Level | Reliability |
+|---|---:|
+| CONFIRMED | 75–95% |
+| RUMOR | 50–74% |
+| SUSPICIOUS | 25–49% |
+| WILD SPECULATION | 5–24% |
+
+Therefore, the civilization has a completely unreliable information network.
+
+---
+
+# ⚖️ 9. Pebble Court
+
+Pebbles can be accused of ridiculous crimes.
+
+### Possible Crimes
+
+- Illegal Rolling
+- Suspicious Standing
+- Unauthorized Staring
+- Excessive Doing Nothing
+- Gossip Without Permission
+- Moving Without Purpose
+- Thinking Too Loudly
+- Standing in the Wrong Place
+- Being Suspicious
+- Stealing Absolutely Nothing
+
+### Possible Verdicts
+
+- Guilty of absolutely nothing
+- Not guilty because nobody cares
+- Sentence: 3 minutes of standing still
+- Case dismissed due to lack of purpose
+- Guilty of suspicious behavior
+- Warning issued for unnecessary movement
+
+The court system ensures that even meaningless behavior receives unnecessary legal attention.
+
+---
+
+# 💕 10. Relationships
+
+Pebbles can randomly develop relationships with one another.
+
+Possible relationship types include:
+
+- Friends
+- Best Friends
+- Enemies
+- Suspicious Partners
+- Secret Friends
+- Professional Rivals
+
+Relationships are dynamically generated while the civilization is running.
+
+---
+
+# 💍 11. Marriages
+
+Sometimes two unmarried pebbles decide to get married.
+
+The system randomly selects two available pebbles and creates a marriage.
+
+Example:
+
+> Gerald 1 and Martha 2 are now married for absolutely no reason.
+
+Because apparently even a pebble civilization needs weddings.
+
+---
+
+# 🎲 12. Random Events
+
+The civilization continuously experiences random events.
+
+Examples include:
+
+- A suspicious amount of nothing happened.
+- Two pebbles stood unusually close.
+- Someone started a pointless argument.
+- The civilization experienced complete silence.
+- Someone looked at someone else.
+- A pebble rolled for absolutely no reason.
+- Nobody knows what happened.
+- A pebble has been standing still for 47 minutes.
+- The council discussed absolutely nothing.
+- Everyone decided to do nothing.
+- The government announced that nothing will change.
+- A pebble forgot why it moved.
+- Someone was caught thinking.
+- The economy experienced absolutely no growth.
+- A historic moment occurred and nobody noticed.
+
+Every event receives an importance value and an impact description.
+
+---
+
+# 🏆 13. Achievements
+
+Pebbles can randomly receive achievements.
+
+Examples include:
+
+- Moved 1 centimeter
+- Did absolutely nothing
+- Gossiped successfully
+- Stared at another pebble
+- Survived another day
+- Avoided responsibility
+- Won an argument about nothing
+- Became unnecessarily suspicious
+- Rolled without permission
+- Thought about doing something
+
+These achievements provide absolutely no meaningful benefit.
+
+---
+
+# 📚 14. Civilization History
+
+PEBBLEVERSE maintains a continuously updated history of civilization activity.
+
+The history can contain:
+
+- Random events
+- Gossip
+- Social activity
+- Other noteworthy moments
+
+This allows users to observe how the civilization changes over time.
+
+---
+
+# ⚡ Real-Time Simulation
+
+The frontend communicates with the Flask backend using API endpoints.
+
+Different systems update at different intervals.
+
+| Feature | Update Interval |
+|---|---:|
+| Pebble movement | 3 seconds |
+| Statistics | 3 seconds |
+| Gossip | 5 seconds |
+| Court | 7 seconds |
+| Relationships | 8 seconds |
+| Events | 10 seconds |
+| History | 10 seconds |
+| Marriages | 12 seconds |
+| Achievements | 15 seconds |
+
+This creates the feeling of a continuously evolving civilization.
+
+---
+
+# 🏗️ System Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │     PEBBLEVERSE     │
+                    │   Web Application   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    Flask Backend    │
+                    │       app.py        │
+                    └──────────┬──────────┘
+                               │
+              ┌────────────────┼────────────────┐
+              │                │                │
+              ▼                ▼                ▼
+       ┌────────────┐   ┌────────────┐   ┌────────────┐
+       │   Pebbles  │   │ Civilization│   │   Events   │
+       │    Data    │   │   Systems   │   │  History   │
+       └────────────┘   └────────────┘   └────────────┘
+              │                │                │
+              └────────────────┼────────────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │      REST APIs      │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   HTML / CSS / JS   │
+                    │   Interactive UI    │
+                    └─────────────────────┘
+🔌 API Endpoints
+Endpoint	Purpose
+/	Main application
+/pebbles	Get and update pebble states
+/stats	Civilization statistics
+/government	Government information
+/laws	Civilization laws
+/gossip	Generate and retrieve gossip
+/court	Generate and retrieve court cases
+/relationships	Retrieve relationships
+/marriages	Retrieve marriages
+/event	Generate a civilization event
+/achievement	Generate a pebble achievement
+/history	Retrieve civilization history
+🧩 Pebble Data Model
+
+Each pebble is represented using a Python dictionary.
+
+Pebble
+│
+├── ID
+├── Name
+├── Personality
+├── Mood
+├── Action
+├── Age
+├── Favorite Number
+├── X Position
+├── Y Position
+├── Gossip Count
+├── Money
+├── Crime Count
+├── Status
+├── Partner
+└── Achievement
+
+This lightweight structure makes the simulation easy to understand and extend.
+
+🎨 UI / UX
+
+PEBBLEVERSE is designed as a playful interactive dashboard rather than a conventional business application.
+
+The interface focuses on:
+
+Rounded cards
+Visual hierarchy
+Interactive civilization elements
+Animated components
+Character-focused information
+Live statistics
+Cartoon-style presentation
+Clear information grouping
+Visual storytelling
+
+The objective is to make the application feel like a small living world rather than a static dashboard.
+
+🖼️ Screenshots
+🏠 Home — Pebble Plains
+
+🪨 Pebble Profile
+
+🏛️ Government
+
+📊 Civilization Statistics
+
+🎯 Civilization Purpose
+
+🏘️ Pebble Town Square
+
+🗣️ Gossip
+
+⚖️ Pebble Court
+
+📜 Useless Laws
+
+💕 Relationships
+
+💍 Marriages
+
+🎲 Latest Event
+
+🪨 Additional Views
+
+🎥 Demo
+
+A demonstration video of PEBBLEVERSE is included in the repository.
+
+▶️ Watch the PEBBLEVERSE Demo
+
+🛠️ Technology Stack
+Backend
+Python
+Flask
+Frontend
+HTML5
+CSS3
+JavaScript
+Development Tools
+Visual Studio Code
+Git
+GitHub
+Python Virtual Environment
+📁 Project Structure
+PEBBLEVERSE/
+│
+├── app.py
+│
+├── templates/
+│   └── index.html
+│
+├── Home.png
+├── pebble1.png
+├── pebble2.png
+├── pebble3.png
+├── pebble4.png
+├── pebble5.png
+├── pebble6.png
+├── pebble7.png
+├── pebble8.png
+├── pebble9.png
+├── pebble10.png
+├── pebble11.png
+├── pebble12.png
+├── pebble13.png
+├── pebble14.png
+├── pebble.mp4
+│
+└── README.md
+🚀 Installation
+1. Clone the Repository
+git clone https://github.com/angeljosy/PEBBLEVERSE.git
+
+Move into the project directory:
+
+cd PEBBLEVERSE
+2. Create a Virtual Environment
+python -m venv venv
+
+Activate it on Windows:
+
+venv\Scripts\Activate.ps1
+3. Install Flask
+pip install flask
+4. Run the Application
+python app.py
+
+Then open:
+
+http://127.0.0.1:5000/
+
+in your browser.
+
+🔄 Simulation Flow
+Application Starts
+        │
+        ▼
+Generate 30 Pebbles
+        │
+        ▼
+Assign Random Characteristics
+        │
+        ├── Personality
+        ├── Mood
+        ├── Action
+        ├── Age
+        ├── Money
+        └── Position
+        │
+        ▼
+Create Government
+        │
+        ▼
+Create Initial Relationships
+        │
+        ▼
+Create Initial Marriages
+        │
+        ▼
+Start Flask Server
+        │
+        ▼
+Frontend Requests Data
+        │
+        ▼
+Civilization Continuously Changes
+        │
+        ├── Pebbles Move
+        ├── Moods Change
+        ├── Gossip Appears
+        ├── Crimes Occur
+        ├── Relationships Develop
+        ├── Marriages Happen
+        ├── Events Occur
+        └── Achievements Appear
+🧪 Randomness and Simulation
+
+Randomness is one of the main components of PEBBLEVERSE.
+
+The Python random module is used to generate:
+
+Pebble characteristics
+Positions
+Moods
+Actions
+Government members
+Relationships
+Marriages
+Gossip
+Crimes
+Events
+Achievements
+
+Because of this, every execution can produce a slightly different civilization.
+
+💡 Design Philosophy
+
+PEBBLEVERSE combines:
+
+Simulation + Randomness + Humor + Interactivity
+
+Instead of simulating something practical such as:
+
+Financial markets
+Traffic
+Weather
+Business analytics
+Industrial processes
+
+PEBBLEVERSE asks a much more important question:
+
+What happens when pebbles are given a civilization?
+
+The answer:
+
+Apparently, bureaucracy.
+🎯 Project Objectives
+
+The main objectives of PEBBLEVERSE are to demonstrate:
+
+Flask web application development
+REST API communication
+Dynamic frontend updates
+Python data structures
+Randomized simulation
+State management
+Interactive UI design
+Event generation
+Social relationship modeling
+Creative software development
+🔮 Future Improvements
+
+Possible future versions could introduce:
+
+Pebble families
+Generational inheritance
+Elections
+Political parties
+Economic markets
+Property ownership
+Jobs
+Education
+Healthcare
+Criminal investigations
+Advanced AI-driven personalities
+Pebble neighborhoods
+Natural disasters
+Civilization wars
+Trading between pebbles
+Save/load civilization state
+Database persistence
+Multiplayer civilization mode
+🤖 Artificial Intelligence
+
+Future versions could use AI to control pebble personalities and allow pebbles to make independent decisions.
+
+For example:
+
+Pebble:
+"I don't trust Gerald."
+
+Why?
+
+"Because he rolled 2 centimeters yesterday."
+📈 Current Project Status
+Component	Status
+Pebble generation	✅ Complete
+Pebble movement	✅ Complete
+Pebble profiles	✅ Complete
+Statistics	✅ Complete
+Government	✅ Complete
+Laws	✅ Complete
+Gossip	✅ Complete
+Court system	✅ Complete
+Relationships	✅ Complete
+Marriages	✅ Complete
+Events	✅ Complete
+Achievements	✅ Complete
+History	✅ Complete
+Interactive dashboard	✅ Complete
+Screenshots	✅ Included
