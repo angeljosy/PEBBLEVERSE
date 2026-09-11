@@ -1,1 +1,3327 @@
+<!DOCTYPE html>
 
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PEBBLEVERSE</title>
+
+
+    <style>
+        /* ============================================================
+   GLOBAL
+============================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                "Trebuchet MS",
+                Arial,
+                sans-serif;
+
+            background:
+                linear-gradient(135deg,
+                    #fffaf0,
+                    #fff5e5,
+                    #f5fbef);
+
+            color: #50483f;
+
+            min-height: 100vh;
+
+            overflow-x: hidden;
+        }
+
+
+        /* ============================================================
+   BACKGROUND DECORATIONS
+============================================================ */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 300px;
+            height: 300px;
+
+            background: #ffd7cf;
+
+            opacity: .35;
+
+            border-radius: 50%;
+
+            left: -130px;
+            top: 180px;
+
+            z-index: -1;
+
+            animation:
+                backgroundFloat 8s ease-in-out infinite;
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 350px;
+            height: 350px;
+
+            background: #dff1ce;
+
+            opacity: .4;
+
+            border-radius: 50%;
+
+            right: -150px;
+            bottom: -100px;
+
+            z-index: -1;
+
+            animation:
+                backgroundFloat 10s ease-in-out infinite reverse;
+        }
+
+
+        @keyframes backgroundFloat {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-20px) rotate(8deg);
+            }
+        }
+
+
+        /* ============================================================
+   HEADER
+============================================================ */
+
+        header {
+
+            padding:
+                28px 25px 24px;
+
+            text-align: center;
+
+            background:
+                rgba(255, 255, 255, .72);
+
+            backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                2px solid #eadfce;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        header::before {
+
+            content: "🪨";
+
+            position: absolute;
+
+            font-size: 40px;
+
+            left: 12%;
+
+            animation:
+                headerPebble 4s ease-in-out infinite;
+        }
+
+
+        header::after {
+
+            content: "🪨";
+
+            position: absolute;
+
+            font-size: 27px;
+
+            right: 14%;
+
+            animation:
+                headerPebble 5s ease-in-out infinite reverse;
+        }
+
+
+        @keyframes headerPebble {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0) rotate(-10deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px) rotate(10deg);
+            }
+        }
+
+
+        header h1 {
+
+            margin: 0;
+
+            font-size: 42px;
+
+            color: #51483f;
+
+            letter-spacing: 2px;
+
+            text-shadow:
+                2px 3px 0 #eadfce;
+        }
+
+
+        header p {
+
+            margin:
+                7px 0 0;
+
+            color: #92877b;
+
+            font-size: 14px;
+        }
+
+
+        /* ============================================================
+   DASHBOARD
+============================================================ */
+
+        .dashboard {
+
+            max-width: 1500px;
+
+            margin: auto;
+
+            padding: 18px;
+        }
+
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(420px, 2fr) minmax(260px, 1fr) minmax(260px, 1fr);
+
+            gap: 16px;
+
+            align-items: start;
+        }
+
+
+        /* ============================================================
+   BOX
+============================================================ */
+
+        .box {
+
+            background:
+                rgba(255, 255, 255, .82);
+
+            border:
+                2px solid #eadfce;
+
+            border-radius: 24px;
+
+            padding: 17px;
+
+            box-shadow:
+                0 10px 25px rgba(100, 75, 45, .07);
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .box:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 32px rgba(100, 75, 45, .11);
+        }
+
+
+        .box::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+            height: 80px;
+
+            background: #fff4d8;
+
+            border-radius: 50%;
+
+            right: -25px;
+            top: -25px;
+
+            opacity: .65;
+        }
+
+
+        .box h2 {
+
+            margin:
+                0 0 13px;
+
+            font-size: 18px;
+
+            color: #50483f;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* ============================================================
+   WORLD
+============================================================ */
+
+        .world {
+
+            grid-row:
+                span 2;
+
+            height: 560px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(circle,
+                    rgba(125, 110, 90, .18) 2px,
+                    transparent 2px),
+
+                linear-gradient(180deg,
+                    #fffdf7,
+                    #f7f1df);
+
+            background-size:
+                28px 28px,
+                auto;
+
+            border-radius: 30px;
+        }
+
+
+        .world::before {
+
+            content: "PEBBLE PLAINS";
+
+            position: absolute;
+
+            top: 15px;
+            left: 18px;
+
+            padding:
+                7px 12px;
+
+            background:
+                rgba(255, 255, 255, .8);
+
+            border:
+                1px solid #e9deca;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            color: #8c8175;
+
+            z-index: 5;
+        }
+
+
+        .world::after {
+
+            content: "🌿";
+
+            position: absolute;
+
+            bottom: 20px;
+            right: 25px;
+
+            font-size: 34px;
+
+            opacity: .6;
+
+            animation:
+                plantFloat 3s ease-in-out infinite;
+        }
+
+
+        @keyframes plantFloat {
+
+            0%,
+            100% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(7deg);
+            }
+        }
+
+
+        /* ============================================================
+   PEBBLES
+============================================================ */
+
+        .pebble {
+
+            position: absolute;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+            transition:
+                transform .25s ease;
+
+            filter:
+                drop-shadow(0 4px 3px rgba(60, 45, 30, .18));
+
+            z-index: 3;
+
+            animation:
+                pebbleIdle 2.5s ease-in-out infinite;
+        }
+
+
+        .pebble:hover {
+
+            transform:
+                scale(1.6) rotate(-10deg);
+
+            z-index: 10;
+        }
+
+
+        .pebble.selected {
+
+            transform:
+                scale(1.7);
+
+            z-index: 20;
+        }
+
+
+        @keyframes pebbleIdle {
+
+            0%,
+            100% {
+                margin-top: 0;
+            }
+
+            50% {
+                margin-top: -6px;
+            }
+        }
+
+
+        /* ============================================================
+   PROFILE
+============================================================ */
+
+        #profile {
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .profile-pebble {
+
+            text-align: center;
+
+            font-size: 54px;
+
+            animation:
+                profileBounce 1.8s ease-in-out infinite;
+        }
+
+
+        @keyframes profileBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px) rotate(5deg);
+            }
+        }
+
+
+        .stat {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin:
+                8px 0;
+
+            padding:
+                9px 12px;
+
+            color: #80766b;
+
+            background:
+                rgba(255, 248, 238, .72);
+
+            border:
+                1px solid #eee1cf;
+
+            border-radius: 14px;
+
+            font-size: 13px;
+        }
+
+
+        .stat span {
+
+            color: #514940;
+
+            font-weight: bold;
+
+            text-align: right;
+
+            max-width: 65%;
+        }
+
+
+        /* ============================================================
+   GOVERNMENT
+============================================================ */
+
+        .president {
+
+            text-align: center;
+
+            font-size: 18px;
+
+            margin: 10px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .gov-crown {
+
+            font-size: 42px;
+
+            display: block;
+
+            animation:
+                crownFloat 2s ease-in-out infinite;
+        }
+
+
+        @keyframes crownFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px) rotate(3deg);
+            }
+        }
+
+
+        /* ============================================================
+   BIG
+============================================================ */
+
+        .big {
+
+            font-size: 50px;
+
+            text-align: center;
+
+            margin:
+                10px 0 15px;
+        }
+
+
+        .warning {
+
+            color: #a49a8f;
+
+            text-align: center;
+
+            padding: 10px;
+
+            font-size: 13px;
+        }
+
+
+        /* ============================================================
+   PURPOSE
+============================================================ */
+
+        .purpose {
+
+            text-align: center;
+
+            font-size: 42px;
+
+            font-weight: 900;
+
+            color: #b1b1b1;
+
+            padding: 25px 10px;
+
+            letter-spacing: 2px;
+
+            animation:
+                purposePulse 3s ease-in-out infinite;
+        }
+
+
+        @keyframes purposePulse {
+
+            0%,
+            100% {
+                opacity: .7;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.04);
+            }
+        }
+
+
+        /* ============================================================
+   PROGRESS
+============================================================ */
+
+        .progress-track {
+
+            height: 11px;
+
+            background: #eee3d2;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin-top: 12px;
+        }
+
+
+        .progress-fill {
+
+            width: .5%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(90deg,
+                    #f2c879,
+                    #d8e99b);
+
+            border-radius: 20px;
+
+            animation:
+                progressGlow 3s infinite;
+        }
+
+
+        @keyframes progressGlow {
+
+            0%,
+            100% {
+                opacity: .7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+
+        /* ============================================================
+   SCROLL
+============================================================ */
+
+        .scroll {
+
+            max-height: 245px;
+
+            overflow-y: auto;
+
+            padding-right: 4px;
+        }
+
+
+        .scroll::-webkit-scrollbar {
+
+            width: 5px;
+        }
+
+
+        .scroll::-webkit-scrollbar-thumb {
+
+            background: #ddcfbc;
+
+            border-radius: 20px;
+        }
+
+
+        /* ============================================================
+   ITEMS
+============================================================ */
+
+        .item {
+
+            background:
+                #fffaf2;
+
+            border:
+                1px solid #eadfce;
+
+            border-radius: 15px;
+
+            padding: 10px 11px;
+
+            margin-bottom: 8px;
+
+            font-size: 12px;
+
+            animation:
+                itemAppear .35s ease;
+
+            transition:
+                transform .2s ease,
+                background .2s ease;
+        }
+
+
+        .item:hover {
+
+            transform:
+                translateX(4px);
+
+            background:
+                #fff5df;
+        }
+
+
+        .item small {
+
+            color: #a3998d;
+
+            font-size: 10px;
+        }
+
+
+        @keyframes itemAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(8px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* ============================================================
+   LAWS
+============================================================ */
+
+        .law {
+
+            padding:
+                10px 8px;
+
+            border-bottom:
+                1px dashed #e5dac9;
+
+            color: #746a60;
+
+            font-size: 12px;
+
+            transition:
+                padding-left .2s ease;
+        }
+
+
+        .law:hover {
+
+            padding-left: 14px;
+
+            color: #514940;
+        }
+
+
+        /* ============================================================
+   TOWN SQUARE
+============================================================ */
+
+        .town-square {
+
+            grid-column:
+                1;
+
+            min-height:
+                335px;
+
+            background:
+                linear-gradient(145deg,
+                    #fffdf7,
+                    #fff3dc);
+        }
+
+
+        .town-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            position: relative;
+
+            z-index: 3;
+        }
+
+
+        .live-badge {
+
+            background:
+                #e9f9dc;
+
+            color:
+                #5e9b35;
+
+            padding:
+                5px 10px;
+
+            border-radius:
+                20px;
+
+            font-size:
+                10px;
+
+            font-weight:
+                bold;
+        }
+
+
+        .live-dot {
+
+            display:
+                inline-block;
+
+            width:
+                7px;
+
+            height:
+                7px;
+
+            background:
+                #7fd34e;
+
+            border-radius:
+                50%;
+
+            margin-right:
+                4px;
+
+            animation:
+                livePulse 1.2s infinite;
+        }
+
+
+        @keyframes livePulse {
+
+            0%,
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+
+            50% {
+
+                opacity: .35;
+
+                transform:
+                    scale(.7);
+            }
+        }
+
+
+        /* ============================================================
+   TOWN SCENE
+============================================================ */
+
+        .town-scene {
+
+            height:
+                135px;
+
+            position:
+                relative;
+
+            margin-top:
+                5px;
+
+            background:
+
+                radial-gradient(circle,
+                    rgba(100, 90, 80, .12) 2px,
+                    transparent 2px);
+
+            background-size:
+                25px 25px;
+
+            border-radius:
+                18px;
+
+            overflow:
+                hidden;
+
+            border:
+                1px dashed #dfd0b9;
+        }
+
+
+        .town-scene::after {
+
+            content:
+                "🌱  🌱        🌱     🌱";
+
+            position:
+                absolute;
+
+            bottom:
+                5px;
+
+            left:
+                15px;
+
+            font-size:
+                18px;
+
+            opacity:
+                .55;
+        }
+
+
+        .town-pebble {
+
+            position:
+                absolute;
+
+            font-size:
+                27px;
+
+            z-index:
+                3;
+
+            animation:
+                townBounce 2s ease-in-out infinite;
+        }
+
+
+        .town-pebble:nth-child(1) {
+
+            left:
+                12%;
+
+            bottom:
+                20px;
+        }
+
+
+        .town-pebble:nth-child(2) {
+
+            left:
+                38%;
+
+            bottom:
+                48px;
+
+            animation-delay:
+                .5s;
+        }
+
+
+        .town-pebble:nth-child(3) {
+
+            right:
+                25%;
+
+            bottom:
+                18px;
+
+            animation-delay:
+                1s;
+        }
+
+
+        .town-pebble:nth-child(4) {
+
+            right:
+                8%;
+
+            bottom:
+                55px;
+
+            animation-delay:
+                1.5s;
+        }
+
+
+        @keyframes townBounce {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0) rotate(-5deg);
+            }
+
+            50% {
+
+                transform:
+                    translateY(-9px) rotate(5deg);
+            }
+        }
+
+
+        /* ============================================================
+   SPEECH BUBBLE
+============================================================ */
+
+        .town-speech {
+
+            position:
+                absolute;
+
+            left:
+                43%;
+
+            top:
+                13px;
+
+            max-width:
+                190px;
+
+            background:
+                white;
+
+            padding:
+                8px 11px;
+
+            border-radius:
+                14px;
+
+            font-size:
+                11px;
+
+            color:
+                #625950;
+
+            box-shadow:
+                0 5px 12px rgba(80, 60, 30, .08);
+
+            animation:
+                speechFloat 3s ease-in-out infinite;
+
+            z-index:
+                5;
+        }
+
+
+        .town-speech::after {
+
+            content: "";
+
+            position:
+                absolute;
+
+            bottom:
+                -7px;
+
+            left:
+                20px;
+
+            border-width:
+                7px 7px 0 0;
+
+            border-style:
+                solid;
+
+            border-color:
+                white transparent transparent transparent;
+        }
+
+
+        @keyframes speechFloat {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+
+                transform:
+                    translateY(-5px);
+            }
+        }
+
+
+        /* ============================================================
+   MINI CARDS
+============================================================ */
+
+        .town-info {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                9px;
+
+            margin-top:
+                10px;
+
+            position:
+                relative;
+
+            z-index:
+                3;
+        }
+
+
+        .town-mini {
+
+            padding:
+                10px;
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(255, 255, 255, .8);
+
+            border:
+                1px solid #eadfce;
+
+            text-align:
+                center;
+
+            transition:
+                .2s;
+        }
+
+
+        .town-mini:hover {
+
+            transform:
+                translateY(-4px) rotate(-1deg);
+
+            box-shadow:
+                0 7px 15px rgba(70, 50, 30, .1);
+        }
+
+
+        .town-mini-icon {
+
+            font-size:
+                22px;
+        }
+
+
+        .town-mini-title {
+
+            font-size:
+                9px;
+
+            color:
+                #93877a;
+
+            margin-top:
+                3px;
+        }
+
+
+        .town-mini-value {
+
+            font-size:
+                12px;
+
+            font-weight:
+                900;
+
+            color:
+                #4c443c;
+
+            margin-top:
+                3px;
+        }
+
+
+        /* ============================================================
+   ANNOUNCEMENT
+============================================================ */
+
+        .town-announcement {
+
+            margin-top:
+                10px;
+
+            padding:
+                9px 12px;
+
+            border-radius:
+                13px;
+
+            background:
+                linear-gradient(90deg,
+                    #fff4ce,
+                    #fffaf0);
+
+            border:
+                1px solid #eeddb7;
+
+            font-size:
+                11px;
+
+            color:
+                #665b4e;
+
+            position:
+                relative;
+
+            z-index:
+                3;
+
+            transition:
+                opacity .25s ease;
+        }
+
+
+        /* ============================================================
+   RELATIONSHIP HEARTS
+============================================================ */
+
+        .relationship-card {
+
+            position:
+                relative;
+        }
+
+
+        .heart-float {
+
+            position:
+                absolute;
+
+            right:
+                12px;
+
+            top:
+                8px;
+
+            font-size:
+                13px;
+
+            animation:
+                heartFloat 2s ease-in-out infinite;
+        }
+
+
+        @keyframes heartFloat {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+                opacity:
+                    .5;
+            }
+
+            50% {
+
+                transform:
+                    translateY(-5px);
+
+                opacity:
+                    1;
+            }
+        }
+
+
+        /* ============================================================
+   MARRIAGE
+============================================================ */
+
+        .marriage-card {
+
+            background:
+                linear-gradient(135deg,
+                    #fff8f1,
+                    #fffdf8);
+        }
+
+
+        .ring {
+
+            display:
+                inline-block;
+
+            animation:
+                ringSpin 3s ease-in-out infinite;
+        }
+
+
+        @keyframes ringSpin {
+
+            0%,
+            100% {
+
+                transform:
+                    rotate(0deg);
+            }
+
+            50% {
+
+                transform:
+                    rotate(12deg) scale(1.1);
+            }
+        }
+
+
+        /* ============================================================
+   EVENT
+============================================================ */
+
+        .event-main {
+
+            font-size:
+                15px;
+
+            line-height:
+                1.5;
+
+            position:
+                relative;
+
+            z-index:
+                2;
+        }
+
+
+        .event-icon {
+
+            font-size:
+                35px;
+
+            animation:
+                diceBounce 2s infinite;
+        }
+
+
+        @keyframes diceBounce {
+
+            0%,
+            100% {
+
+                transform:
+                    rotate(0deg) translateY(0);
+            }
+
+            50% {
+
+                transform:
+                    rotate(8deg) translateY(-5px);
+            }
+        }
+
+
+        /* ============================================================
+   ACHIEVEMENT
+============================================================ */
+
+        .achievement {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            text-align:
+                center;
+
+            padding:
+                10px;
+        }
+
+
+        .trophy {
+
+            font-size:
+                42px;
+
+            display:
+                block;
+
+            animation:
+                trophyBounce 2s infinite;
+        }
+
+
+        @keyframes trophyBounce {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0) rotate(-3deg);
+            }
+
+            50% {
+
+                transform:
+                    translateY(-7px) rotate(3deg);
+            }
+        }
+
+
+        /* ============================================================
+   BUTTON
+============================================================ */
+
+        button {
+
+            background:
+                #fff8ed;
+
+            color:
+                #655b51;
+
+            border:
+                1px solid #dfd1bd;
+
+            padding:
+                8px 12px;
+
+            border-radius:
+                10px;
+
+            cursor:
+                pointer;
+
+            transition:
+                .2s;
+        }
+
+
+        button:hover {
+
+            background:
+                #ffefd0;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* ============================================================
+   RESPONSIVE
+============================================================ */
+
+        @media(max-width: 1100px) {
+
+            .grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .world {
+
+                grid-column:
+                    span 2;
+
+                grid-row:
+                    auto;
+            }
+
+            .town-square {
+
+                grid-column:
+                    span 2;
+            }
+        }
+
+
+        @media(max-width: 700px) {
+
+            .grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .world {
+
+                grid-column:
+                    auto;
+
+                height:
+                    450px;
+            }
+
+            .town-square {
+
+                grid-column:
+                    auto;
+            }
+
+            .town-info {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            header h1 {
+
+                font-size:
+                    32px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================================================
+     HEADER
+============================================================ -->
+
+    <header>
+
+        <h1>🪨 PEBBLEVERSE</h1>
+
+        <p>
+            A Civilization With Absolutely No Purpose.
+        </p>
+
+    </header>
+
+
+
+    <div class="dashboard">
+
+
+        <div class="grid">
+
+
+            <!-- ============================================================
+     WORLD
+============================================================ -->
+
+            <div class="box world" id="world">
+
+            </div>
+
+
+
+            <!-- ============================================================
+     PROFILE
+============================================================ -->
+
+            <div class="box">
+
+                <h2>🪨 Pebble Profile</h2>
+
+                <div id="profile">
+
+                    <div class="profile-pebble">
+                        🪨
+                    </div>
+
+                    <div class="warning">
+                        Click a pebble to inspect its extremely important life.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     GOVERNMENT
+============================================================ -->
+
+            <div class="box">
+
+                <h2>🏛️ Government</h2>
+
+                <div class="president" id="government">
+
+                    Loading government...
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     STATISTICS
+============================================================ -->
+
+            <div class="box">
+
+                <h2>📊 Civilization Statistics</h2>
+
+
+                <div class="stat">
+
+                    Population
+
+                    <span id="population">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    Moving
+
+                    <span id="moving">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    Doing Nothing
+
+                    <span id="nothing">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    Gossip
+
+                    <span id="gossipCount">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    Crimes
+
+                    <span id="crimeCount">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    Relationships
+
+                    <span id="relationshipCount">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    Marriages
+
+                    <span id="marriageCount">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    Economy
+
+                    <span id="money">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     PURPOSE
+============================================================ -->
+
+            <div class="box">
+
+                <h2>🎯 Civilization Purpose</h2>
+
+                <div class="purpose">
+
+                    NONE
+
+                </div>
+
+                <div class="warning">
+
+                    Progress: 0.0001%
+
+                </div>
+
+                <div class="progress-track">
+
+                    <div class="progress-fill"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     PEBBLE TOWN SQUARE
+============================================================ -->
+
+            <div class="box town-square">
+
+                <div class="town-header">
+
+                    <h2>
+                        🏘️ Pebble Town Square
+                    </h2>
+
+                    <div class="live-badge">
+
+                        <span class="live-dot"></span>
+
+                        LIVE
+
+                    </div>
+
+                </div>
+
+
+                <div class="town-scene">
+
+
+                    <div class="town-pebble">
+                        🪨
+                    </div>
+
+
+                    <div class="town-pebble">
+                        🪨
+                    </div>
+
+
+                    <div class="town-pebble">
+                        🪨
+                    </div>
+
+
+                    <div class="town-pebble">
+                        🪨
+                    </div>
+
+
+                    <div class="town-speech">
+
+                        🗣️
+
+                        "Did you hear about
+                        Professor Rock?"
+
+                    </div>
+
+                </div>
+
+
+                <div class="town-info">
+
+
+                    <div class="town-mini">
+
+                        <div class="town-mini-icon">
+                            🗣️
+                        </div>
+
+                        <div class="town-mini-title">
+                            CURRENT MOOD
+                        </div>
+
+                        <div class="town-mini-value" id="townMood">
+
+                            Nosy
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="town-mini">
+
+                        <div class="town-mini-icon">
+                            💕
+                        </div>
+
+                        <div class="town-mini-title">
+                            SOCIAL DRAMA
+                        </div>
+
+                        <div class="town-mini-value" id="townDrama">
+
+                            Increasing
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="town-mini">
+
+                        <div class="town-mini-icon">
+                            🎲
+                        </div>
+
+                        <div class="town-mini-title">
+                            PURPOSE
+                        </div>
+
+                        <div class="town-mini-value">
+
+                            None
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="town-announcement">
+
+                    📢
+
+                    <b>CIVILIZATION ANNOUNCEMENT:</b>
+
+                    <span id="townAnnouncement">
+
+                        Nobody has accomplished anything recently.
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     GOSSIP
+============================================================ -->
+
+            <div class="box">
+
+                <h2>🗣️ Gossip</h2>
+
+                <div class="scroll" id="gossip">
+
+                    Waiting for gossip...
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     COURT
+============================================================ -->
+
+            <div class="box">
+
+                <h2>⚖️ Pebble Court</h2>
+
+                <div class="scroll" id="court">
+
+                    Waiting for crime...
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     LAWS
+============================================================ -->
+
+            <div class="box">
+
+                <h2>📜 Useless Laws</h2>
+
+                <div class="scroll" id="laws">
+
+                    Loading laws...
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     RELATIONSHIPS
+============================================================ -->
+
+            <div class="box">
+
+                <h2>❤️ Relationships</h2>
+
+                <div class="scroll" id="relationshipList">
+
+                    Loading social drama...
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     MARRIAGES
+============================================================ -->
+
+            <div class="box">
+
+                <h2>💍 Marriages</h2>
+
+                <div class="scroll" id="marriageList">
+
+                    Loading extremely unnecessary weddings...
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     EVENTS
+============================================================ -->
+
+            <div class="box">
+
+                <h2>🎲 Latest Event</h2>
+
+                <div id="event">
+
+                    Waiting for something pointless...
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     ACHIEVEMENTS
+============================================================ -->
+
+            <div class="box">
+
+                <h2>🏆 Latest Achievement</h2>
+
+                <div id="achievement">
+
+                    Nothing has been achieved.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================================
+     HISTORY
+============================================================ -->
+
+            <div class="box">
+
+                <h2>📜 Civilization History</h2>
+
+                <div class="scroll" id="history">
+
+                    Nothing worth remembering.
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        /* ============================================================
+           HELPER
+        ============================================================ */
+
+        function safeText(value) {
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+
+                return "";
+
+            }
+
+            return String(value);
+        }
+
+
+        /* ============================================================
+           PEBBLES
+        ============================================================ */
+
+        async function loadPebbles() {
+
+            try {
+
+                const response =
+                    await fetch("/pebbles");
+
+                const data =
+                    await response.json();
+
+                const world =
+                    document.getElementById("world");
+
+                world.innerHTML = "";
+
+
+                data.forEach(
+                    (pebble, index) => {
+
+                        const element =
+                            document.createElement("div");
+
+                        element.className =
+                            "pebble";
+
+                        element.innerHTML =
+                            "🪨";
+
+                        element.style.left =
+                            pebble.x + "%";
+
+                        element.style.top =
+                            pebble.y + "%";
+
+                        element.style.animationDelay =
+                            (index * 0.08) + "s";
+
+
+                        element.onclick =
+                            function () {
+
+                                showProfile(
+                                    pebble
+                                );
+
+                            };
+
+
+                        world.appendChild(
+                            element
+                        );
+
+                    }
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Pebble error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           PROFILE
+        ============================================================ */
+
+        function showProfile(pebble) {
+
+            document.getElementById(
+                "profile"
+            ).innerHTML = `
+
+        <div class="profile-pebble">
+            🪨
+        </div>
+
+
+        <div class="stat">
+            Name
+            <span>
+                ${safeText(pebble.name)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Personality
+            <span>
+                ${safeText(pebble.personality)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Mood
+            <span>
+                ${safeText(pebble.mood)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Age
+            <span>
+                ${safeText(pebble.age)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Favorite Number
+            <span>
+                ${safeText(pebble.favorite_number)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Current Action
+            <span>
+                ${safeText(pebble.action)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Gossip
+            <span>
+                ${safeText(pebble.gossip)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Money
+            <span>
+                ₱${safeText(pebble.money)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Partner
+            <span>
+                ${safeText(
+                pebble.partner || "Nobody"
+            )}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Crimes
+            <span>
+                ${safeText(pebble.crime_count)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Status
+            <span>
+                🟢 ${safeText(pebble.status)}
+            </span>
+        </div>
+
+
+        <div class="stat">
+            Life Purpose
+            <span>
+                NONE
+            </span>
+        </div>
+
+    `;
+
+        }
+
+
+        /* ============================================================
+           STATS
+        ============================================================ */
+
+        async function loadStats() {
+
+            try {
+
+                const response =
+                    await fetch("/stats");
+
+                const data =
+                    await response.json();
+
+
+                document.getElementById(
+                    "population"
+                ).innerText =
+                    data.population;
+
+
+                document.getElementById(
+                    "moving"
+                ).innerText =
+                    data.moving;
+
+
+                document.getElementById(
+                    "nothing"
+                ).innerText =
+                    data.doing_nothing;
+
+
+                document.getElementById(
+                    "gossipCount"
+                ).innerText =
+                    data.gossip;
+
+
+                document.getElementById(
+                    "crimeCount"
+                ).innerText =
+                    data.crimes;
+
+
+                document.getElementById(
+                    "relationshipCount"
+                ).innerText =
+                    data.relationships;
+
+
+                document.getElementById(
+                    "marriageCount"
+                ).innerText =
+                    data.marriages;
+
+
+                document.getElementById(
+                    "money"
+                ).innerText =
+                    "₱" + data.money;
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Stats error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           GOVERNMENT
+        ============================================================ */
+
+        async function loadGovernment() {
+
+            try {
+
+                const response =
+                    await fetch("/government");
+
+                const data =
+                    await response.json();
+
+
+                document.getElementById(
+                    "government"
+                ).innerHTML = `
+
+            <span class="gov-crown">
+                👑
+            </span>
+
+            <b>
+                ${safeText(
+                    data.president
+                )}
+            </b>
+
+            <br><br>
+
+            <small>
+                Vice President:
+                ${safeText(
+                    data.vice_president
+                )}
+            </small>
+
+            <br><br>
+
+            <small>
+                Minister of Nothing:
+                ${safeText(
+                    data.minister_nothing
+                )}
+            </small>
+
+            <br><br>
+
+            <small>
+                Minister of Gossip:
+                ${safeText(
+                    data.minister_gossip
+                )}
+            </small>
+
+        `;
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Government error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           GOSSIP
+        ============================================================ */
+
+        async function loadGossip() {
+
+            try {
+
+                const response =
+                    await fetch("/gossip");
+
+                const data =
+                    await response.json();
+
+
+                const box =
+                    document.getElementById(
+                        "gossip"
+                    );
+
+                box.innerHTML = "";
+
+
+                data.forEach(
+                    item => {
+
+                        box.innerHTML += `
+
+                    <div class="item">
+
+                        🗣️
+
+                        <b>
+                            ${safeText(
+                            item.speaker
+                        )}
+                        </b>
+
+                        <br>
+
+                        ${safeText(
+                            item.message
+                        )}
+
+                        <br>
+
+                        <small>
+
+                            ${safeText(
+                            item.level
+                        )}
+
+                            • Reliability:
+                            ${safeText(
+                            item.reliability
+                        )}%
+
+                            •
+                            ${safeText(
+                            item.time
+                        )}
+
+                        </small>
+
+                    </div>
+
+                `;
+
+                    }
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Gossip error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           COURT
+        ============================================================ */
+
+        async function loadCourt() {
+
+            try {
+
+                const response =
+                    await fetch("/court");
+
+                const data =
+                    await response.json();
+
+
+                const box =
+                    document.getElementById(
+                        "court"
+                    );
+
+                box.innerHTML = "";
+
+
+                data.forEach(
+                    caseItem => {
+
+                        box.innerHTML += `
+
+                    <div class="item">
+
+                        🚨
+
+                        <b>
+                            ${safeText(
+                            caseItem.suspect
+                        )}
+                        </b>
+
+                        <br>
+
+                        Crime:
+                        ${safeText(
+                            caseItem.crime
+                        )}
+
+                        <br>
+
+                        Verdict:
+                        ${safeText(
+                            caseItem.verdict
+                        )}
+
+                        <br>
+
+                        <small>
+                            ${safeText(
+                            caseItem.time
+                        )}
+                        </small>
+
+                    </div>
+
+                `;
+
+                    }
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Court error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           LAWS
+        ============================================================ */
+
+        async function loadLaws() {
+
+            try {
+
+                const response =
+                    await fetch("/laws");
+
+                const data =
+                    await response.json();
+
+
+                const box =
+                    document.getElementById(
+                        "laws"
+                    );
+
+                box.innerHTML = "";
+
+
+                data.forEach(
+                    (law, index) => {
+
+                        box.innerHTML += `
+
+                    <div class="law">
+
+                        §${index + 1}
+
+                        ${safeText(law)}
+
+                    </div>
+
+                `;
+
+                    }
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Law error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           RELATIONSHIPS
+        ============================================================ */
+
+        async function loadRelationships() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/relationships"
+                    );
+
+                const data =
+                    await response.json();
+
+
+                const box =
+                    document.getElementById(
+                        "relationshipList"
+                    );
+
+                box.innerHTML = "";
+
+
+                if (!data.length) {
+
+                    box.innerHTML = `
+
+                <div class="warning">
+
+                    🪨
+
+                    The pebbles currently
+                    refuse to socialize.
+
+                </div>
+
+            `;
+
+                    return;
+
+                }
+
+
+                data.forEach(
+                    item => {
+
+                        box.innerHTML += `
+
+                    <div
+                        class="item relationship-card">
+
+                        <span class="heart-float">
+                            ❤️
+                        </span>
+
+                        🪨
+
+                        <b>
+                            ${safeText(item.a)}
+                        </b>
+
+                        ❤️
+
+                        <b>
+                            ${safeText(item.b)}
+                        </b>
+
+                        <br>
+
+                        <small>
+
+                            ${safeText(
+                            item.type
+                        )}
+
+                            •
+
+                            ${safeText(
+                            item.time
+                        )}
+
+                        </small>
+
+                    </div>
+
+                `;
+
+                    }
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Relationship error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           MARRIAGES
+        ============================================================ */
+
+        async function loadMarriages() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/marriages"
+                    );
+
+                const data =
+                    await response.json();
+
+
+                const box =
+                    document.getElementById(
+                        "marriageList"
+                    );
+
+                box.innerHTML = "";
+
+
+                if (!data.length) {
+
+                    box.innerHTML = `
+
+                <div class="warning">
+
+                    💍
+
+                    Nobody has made
+                    this terrible decision yet.
+
+                </div>
+
+            `;
+
+                    return;
+
+                }
+
+
+                data.forEach(
+                    item => {
+
+                        box.innerHTML += `
+
+                    <div
+                        class="item marriage-card">
+
+                        <span class="ring">
+                            💍
+                        </span>
+
+                        <b>
+                            ${safeText(
+                            item.a
+                        )}
+                        </b>
+
+                        +
+
+                        <b>
+                            ${safeText(
+                            item.b
+                        )}
+                        </b>
+
+                        <br>
+
+                        <small>
+
+                            ${safeText(
+                            item.message
+                        )}
+
+                            <br>
+
+                            ${safeText(
+                            item.time
+                        )}
+
+                        </small>
+
+                    </div>
+
+                `;
+
+                    }
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Marriage error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           EVENT
+        ============================================================ */
+
+        async function loadEvent() {
+
+            try {
+
+                const response =
+                    await fetch("/event");
+
+                const data =
+                    await response.json();
+
+
+                document.getElementById(
+                    "event"
+                ).innerHTML = `
+
+            <div class="event-main">
+
+                <div class="event-icon">
+                    🎲
+                </div>
+
+                <b>
+                    ${safeText(
+                    data.message
+                )}
+                </b>
+
+                <br><br>
+
+                Importance:
+                ${safeText(
+                    data.importance
+                )}%
+
+                <br>
+
+                Impact:
+                ${safeText(
+                    data.impact
+                )}
+
+                <br><br>
+
+                <small>
+                    ${safeText(
+                    data.time
+                )}
+                </small>
+
+            </div>
+
+        `;
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Event error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           ACHIEVEMENT
+        ============================================================ */
+
+        async function loadAchievement() {
+
+            try {
+
+                const response =
+                    await fetch("/achievement");
+
+                const data =
+                    await response.json();
+
+
+                document.getElementById(
+                    "achievement"
+                ).innerHTML = `
+
+            <div class="achievement">
+
+                <span class="trophy">
+                    🏆
+                </span>
+
+                <b>
+                    ${safeText(
+                    data.pebble
+                )}
+                </b>
+
+                <br><br>
+
+                Achievement:
+
+                <br>
+
+                ${safeText(
+                    data.achievement
+                )}
+
+            </div>
+
+        `;
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Achievement error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           HISTORY
+        ============================================================ */
+
+        async function loadHistory() {
+
+            try {
+
+                const response =
+                    await fetch("/history");
+
+                const data =
+                    await response.json();
+
+
+                const box =
+                    document.getElementById(
+                        "history"
+                    );
+
+                box.innerHTML = "";
+
+
+                if (!data.length) {
+
+                    box.innerHTML = `
+
+                <div class="warning">
+
+                    Nothing worth remembering.
+
+                </div>
+
+            `;
+
+                    return;
+
+                }
+
+
+                data.forEach(
+                    item => {
+
+                        box.innerHTML += `
+
+                    <div class="item">
+
+                        ${safeText(
+                            item.message
+                        )}
+
+                        <br>
+
+                        <small>
+                            ${safeText(
+                            item.time
+                        )}
+                        </small>
+
+                    </div>
+
+                `;
+
+                    }
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "History error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ============================================================
+           TOWN SQUARE
+        ============================================================ */
+
+        const townAnnouncements = [
+
+            "Nobody has accomplished anything recently.",
+
+            "A pebble has been staring at another pebble for 3 minutes.",
+
+            "The government officially announced that nothing will change.",
+
+            "Someone rolled approximately 2 centimeters.",
+
+            "A suspicious friendship has been detected.",
+
+            "The economy is still doing absolutely nothing.",
+
+            "Two pebbles were seen standing suspiciously close.",
+
+            "The Pebble Council has scheduled another meeting about nothing.",
+
+            "Someone forgot what they were doing.",
+
+            "A pebble has been accused of being too productive.",
+
+            "Everyone is pretending to be busy."
+        ];
+
+
+        const townMoods = [
+
+            "Nosy",
+
+            "Dramatic",
+
+            "Suspicious",
+
+            "Bored",
+
+            "Confused",
+
+            "Peaceful",
+
+            "Judgmental",
+
+            "Existential"
+        ];
+
+
+        const dramaLevels = [
+
+            "Increasing",
+
+            "Unnecessary",
+
+            "Critical",
+
+            "Moderate",
+
+            "Completely Imaginary",
+
+            "Out of control"
+        ];
+
+
+        function updateTownSquare() {
+
+            const mood =
+                townMoods[
+                Math.floor(
+                    Math.random()
+                    * townMoods.length
+                )
+                ];
+
+
+            const announcement =
+                townAnnouncements[
+                Math.floor(
+                    Math.random()
+                    * townAnnouncements.length
+                )
+                ];
+
+
+            const drama =
+                dramaLevels[
+                Math.floor(
+                    Math.random()
+                    * dramaLevels.length
+                )
+                ];
+
+
+            const moodElement =
+                document.getElementById(
+                    "townMood"
+                );
+
+
+            const announcementElement =
+                document.getElementById(
+                    "townAnnouncement"
+                );
+
+
+            const dramaElement =
+                document.getElementById(
+                    "townDrama"
+                );
+
+
+            if (moodElement) {
+
+                moodElement.innerText =
+                    mood;
+
+            }
+
+
+            if (dramaElement) {
+
+                dramaElement.innerText =
+                    drama;
+
+            }
+
+
+            if (announcementElement) {
+
+                announcementElement.style.opacity =
+                    "0";
+
+
+                setTimeout(
+                    () => {
+
+                        announcementElement.innerText =
+                            announcement;
+
+                        announcementElement.style.opacity =
+                            "1";
+
+                    },
+                    250
+                );
+
+            }
+
+        }
+
+
+        updateTownSquare();
+
+
+        setInterval(
+            updateTownSquare,
+            5000
+        );
+
+
+        /* ============================================================
+           INITIAL LOAD
+        ============================================================ */
+
+        loadPebbles();
+
+        loadStats();
+
+        loadGovernment();
+
+        loadGossip();
+
+        loadCourt();
+
+        loadLaws();
+
+        loadRelationships();
+
+        loadMarriages();
+
+        loadEvent();
+
+        loadAchievement();
+
+        loadHistory();
+
+
+        /* ============================================================
+           AUTOMATIC UPDATES
+        ============================================================ */
+
+        setInterval(
+            loadPebbles,
+            3000
+        );
+
+
+        setInterval(
+            loadStats,
+            3000
+        );
+
+
+        setInterval(
+            loadGossip,
+            5000
+        );
+
+
+        setInterval(
+            loadCourt,
+            7000
+        );
+
+
+        setInterval(
+            loadRelationships,
+            5000
+        );
+
+
+        setInterval(
+            loadMarriages,
+            8000
+        );
+
+
+        setInterval(
+            loadEvent,
+            10000
+        );
+
+
+        setInterval(
+            loadAchievement,
+            15000
+        );
+
+
+        setInterval(
+            loadHistory,
+            10000
+        );
+
+    </script>
+
+
+</body>
+
+</html>
