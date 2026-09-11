@@ -32,7 +32,7 @@ And somehow...
 
 **PEBBLEVERSE** is an interactive web-based civilization simulation built using **Python and Flask**.
 
-The application creates a virtual civilization populated by **30 randomly generated pebbles**. Each pebble has its own identity, personality, mood, actions, social relationships, money, criminal record and achievements.
+The application creates a virtual civilization populated by **30 randomly generated pebbles**. Each pebble has its own identity, personality, mood, actions, social relationships, money, criminal record, and achievements.
 
 While the application is running, the civilization continuously changes.
 
@@ -52,7 +52,9 @@ Some even get married.
 
 Random events occur throughout the civilization.
 
-The result is a dynamic miniature society where **nothing particularly useful happens — but something is always happening.**
+The result is a dynamic miniature society where:
+
+> **Nothing particularly useful happens — but something is always happening.**
 
 ---
 
@@ -140,7 +142,9 @@ Government positions are randomly assigned to members of the civilization.
 - Minister of Rolling
 - Minister of Gossip
 
-The government exists mainly to make sure that **nothing productive happens efficiently.**
+The government exists mainly to make sure that:
+
+> **Nothing productive happens efficiently.**
 
 ---
 
@@ -200,7 +204,7 @@ The most important statistic is:
 
 The **Pebble Town Square** represents the social center of the civilization.
 
-It provides a more visual representation of everyday pebble activity.
+It provides a visual representation of everyday pebble activity.
 
 Pebbles can:
 
@@ -219,7 +223,7 @@ The Town Square makes the civilization feel more alive and interactive.
 
 Pebbles constantly generate gossip about other members of the civilization.
 
-Examples:
+Examples include:
 
 - One pebble thinks another pebble is suspicious.
 - Someone has been standing still for too long.
@@ -404,10 +408,10 @@ This creates the feeling of a continuously evolving civilization.
               ┌────────────────┼────────────────┐
               │                │                │
               ▼                ▼                ▼
-       ┌────────────┐   ┌────────────┐   ┌────────────┐
-       │   Pebbles  │   │ Civilization│   │   Events   │
-       │    Data    │   │   Systems   │   │  History   │
-       └────────────┘   └────────────┘   └────────────┘
+       ┌────────────┐   ┌──────────────┐   ┌────────────┐
+       │   Pebbles  │   │ Civilization │   │   Events   │
+       │    Data    │   │   Systems    │   │  History   │
+       └────────────┘   └──────────────┘   └────────────┘
               │                │                │
               └────────────────┼────────────────┘
                                │
@@ -527,9 +531,8 @@ Python Virtual Environment
 PEBBLEVERSE/
 │
 ├── app.py
-│
-├── templates/
-│   └── index.html
+├── index.html
+├── README.md
 │
 ├── Home.png
 ├── pebble1.png
@@ -546,9 +549,8 @@ PEBBLEVERSE/
 ├── pebble12.png
 ├── pebble13.png
 ├── pebble14.png
-├── pebble.mp4
 │
-└── README.md
+└── pebble (2).mp4
 🚀 Installation
 1. Clone the Repository
 git clone https://github.com/angeljosy/PEBBLEVERSE.git
@@ -721,3 +723,4 @@ Achievements	✅ Complete
 History	✅ Complete
 Interactive dashboard	✅ Complete
 Screenshots	✅ Included
+Demo video	✅ Included
