@@ -84,14 +84,11 @@ git clone https://github.com/angeljosy/PEBBLEVERSE.git
 For Software:
 
 # Screenshots (Add at least 3)
-![Pebble1.png](Add screenshot 1 here with proper nam)
-*Add caption explaining what this shows*
+![Pebble1.png]
 
-![pebble3.png](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![pebble3.png]
 
-![pebble4.png](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+![pebble4.png]
 
 # Diagrams
 ![                 ┌──────────────────────┐
